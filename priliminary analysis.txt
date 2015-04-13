@@ -1,0 +1,161 @@
+------------=========  introduction ========-----------
+
+Every person has a lot of life trends that must be handled correctly to live happily.
+Those trends varies from one person to another. May be, there are common life trends among us
+like financial, social, religious, healthy and educational trends and more. Our goals must
+satisfy those trends, and more or less, to keep the balance of our life. Some of us are stucked
+in some trends while ignoring the others. This mistake may turns his life into hell!
+
+In this app, we are doing our best to help people keeping their life balanced, their goals
+and tasks organized and timely planned.
+
+Human resource development specialists says that, our goals can be categorised into four
+categories:
+	1. Urgent and Important goals
+	2. Non urgent  and Important  goals
+	3. Urgent and Unimportant goals
+	4. Non urgent and Unimportant goals
+
+We also help people to visualize the goals' categories to be able to schedule them correctly
+and to care more about goals which belong to second category.
+
+Schedules in this app is reusable so that a person can use fittness schedule shared by aonther
+one. Schedule is a set of goals and activites belongs to this schedule which is a goal.
+
+
+
+
+
+
+
+
+
+
+
+
+------------=========  Entity Relationship Diagram  ========-----------
+
+Entity: LifeTrend
+	+ id
+	+ name
+	+ purpose  // why this trend is in your life
+
+
+
+Entity: Goal
+	+ id
+	+ name
+	+ deleveryDate   // expected time to be acheived
+	+ purpose        // why you need to acheive this goal
+	+ isUrgent
+	+ isImportant
+	+ creationTime    // when this goal is added to the app 
+
+
+Entity: Activity
+	+ id
+	+ name
+	+ #totalIterations // each activiry consists of no. of iterations
+	+ #doneIterations  // no. of achieved iterations
+	+ #delayedIterations // no. of delayed iterations to meet the goal
+	+ duration  // required period to achieve single iteration
+	+ isDefaultDone // user defined atribute. if (true) each ActivityIteration is set to done after (startingTime + period)
+
+
+Entity: ActivityIteration
+	+ id
+	+ startingTime
+	+ isDone
+
+
+Entity: User
+	+ id
+	+ name
+	+ email
+	+ birthDate
+	+ gender
+	+ address
+	+ school
+	+ university
+	+ work
+
+Relation: Activity 1 < has > * ActivityIteration
+
+Relation: Goal 1 < maps to > * Activity
+
+Relation: LifeTrend 1 < has > * Goal
+
+Relation: Goal * < has parent > 1 Goal
+	+ paticipationPercentage // pecentage of how achieving this goal help in achieving its parent
+	
+Relation: Goal 1 < has child > * Goals
+
+Relation: User * < has > * LifeTrend
+	+ lifeTrendNumber	// user definded number for each life trend
+	+ lifeTrendColor	// user definded color for each life trend
+
+
+
+
+
+
+
+
+
+
+
+
+------------=========  Screens  ========-----------
+
+Initially, we have seven screens:
+	1. Slider  // explains how to use this app
+	2. Sign in 
+	3. sign up
+	4. Life tree
+	5. Acivites
+	6. Time line
+	7. User profile
+
+
+
+1. slider
+
+this slider explains how to use this app to manage your life in simple three steps
+	a. Build your life tree's goals
+	b. Map these goals into activites
+	c. Put these activites into your time line
+
+Building your life tree's goals, you have to set your life goal, divide it into smaller and
+smaller goals which belongs to your life trends. Each goal you set should be one of those types:
+	1. composed goal. // can be devided into smaller goals
+	2. repetitive goal // can be mapped into activity
+	3. simple goal // not repeatitive nor composed
+you should divide composed goals into smaller goals. For example, a goal like build your company
+can be devided into smaller goals like, studying necessary materials, reqrutment of team,
+developing activity for this company and so on.
+
+A goal like studying the necessary material may have a smaller goal like reading 10 books
+(100 paper for each one). this goal (reading 10 books) should be mapped into
+an activity like reading 10 papers daily. this activity has 100 iteration to be done. then,
+put some of these iterations on your time line to be achieved.
+
+Simple goals like visting a friend or purchasing something can be directly put to your time
+line.
+
+
+
+
+2. Sign in
+	use can sign in using his user name or email and password
+
+3. Sign up
+	user can register using his email only then complete his progile later
+
+4. User profile
+	user can edit his atributes from this screen
+
+5. Life tree screen // see pictures
+
+6. Activities screen // see pictures
+
+7. Time line screen  // see pictures
